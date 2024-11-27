@@ -15,6 +15,8 @@ const startGame = () => {
     // Spielernamen im Store speichern
     gameStore.setPlayers(player1.value, player2.value);
 
+    gameStore.initializeBoard()
+
     // Auf die Game-Seite routen
     router.push('/game');
 };
