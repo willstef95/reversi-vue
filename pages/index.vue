@@ -1,20 +1,3 @@
-<template>
-    <div class="landing-page">
-        <h1>Reversi</h1>
-        <form @submit.prevent="startGame">
-            <div>
-                <label for="player1">Name Spieler 1:</label>
-                <input id="player1" v-model="player1" placeholder="Spieler 1" required />
-            </div>
-            <div>
-                <label for="player2">Name Spieler 2:</label>
-                <input id="player2" v-model="player2" placeholder="Spieler 2" required />
-            </div>
-            <button type="submit">Spiel starten</button>
-        </form>
-    </div>
-</template>
-
 <script setup>
 import { useGameStore } from '~/stores/game';
 import { useRouter } from 'vue-router';
@@ -36,6 +19,25 @@ const startGame = () => {
     router.push('/game');
 };
 </script>
+
+<template>
+    <div class="landing-page">
+        <h1>Reversi</h1>
+        <form @submit.prevent="startGame">
+            <div>
+                <label for="player1">Name Spieler 1:</label>
+                <input id="player1" v-model="player1" placeholder="Spieler 1" required />
+            </div>
+            <div>
+                <label for="player2">Name Spieler 2:</label>
+                <input id="player2" v-model="player2" placeholder="Spieler 2" required />
+            </div>
+            <button type="submit">Spiel starten</button>
+        </form>
+    </div>
+</template>
+
+
 
 <style>
 .landing-page {
