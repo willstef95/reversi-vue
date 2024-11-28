@@ -6,55 +6,52 @@ const gameStore = useGameStore();
 const currentPlayer = computed(() => gameStore.currentPlayer);
 const player1 = computed(() => gameStore.player1);
 const player2 = computed(() => gameStore.player2);
-</script>
 
+// Bestimme die Farbe des aktuellen Spielers
+const currentPlayerColor = computed(() =>
+    currentPlayer.value === 'black' ? 'black' : 'white'
+);
+</script>
 <template>
-    <div class="game-container">
-        <div class="player-info">
-            <div :class="`stone ${currentPlayer}`"></div>
-            <p>{{ currentPlayer === 'black' ? player1 : player2 }}</p>
-            <div :class="`stone ${currentPlayer}`"></div>
-        </div>
+    <v-container class="game-container" fluid>
+        <!-- Spieler-Info -->
+        <v-row justify="center" align="center" class="player-info">
+            <v-col cols="auto" class="text-center">
+                <v-avatar :color="currentPlayerColor" size="40" :class="currentPlayer === 'white' ? 'border' : ''">
+                    <!-- Stein wird dynamisch angezeigt -->
+                </v-avatar>
+            </v-col>
+            <v-col cols="auto" class="text-center">
+                <p>{{ currentPlayer === 'black' ? player1 : player2 }}</p>
+            </v-col>
+            <v-col cols="auto" class="text-center">
+                <v-avatar :color="currentPlayerColor" size="40" :class="currentPlayer === 'white' ? 'border' : ''">
+                    <!-- Stein wird dynamisch angezeigt -->
+                </v-avatar>
+            </v-col>
+        </v-row>
+
+        <!-- Spielfeld -->
         <GameBoard />
-    </div>
+    </v-container>
 </template>
 
 
-
-<style>
+<style scoped>
 .game-container {
     text-align: center;
 }
 
 .player-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     margin-bottom: 20px;
 }
 
-.player-info p {
-    margin: 0;
-    /* Entfernt zusätzlichen Abstand um den Text */
-    font-size: 16px;
-    /* Gleiche Schriftgröße für eine klare Ausrichtung */
-    line-height: 30px;
-    /* Gleiche Höhe wie die Steine */
-}
-
-.stone {
-    width: 30px;
-    height: 30px;
+.border {
+    border: 10px solid black;
+    /* Schwarze Umrandung für den weißen Stein */
     border-radius: 50%;
-    border: 2px solid black;
-}
-
-.stone.black {
-    background-color: black;
-}
-
-.stone.white {
-    background-color: white;
+    /* Runde Form sicherstellen */
+    /* box-sizing: border-box; */
+    /* Verhindert, dass die Größe durch die Border verändert wird */
 }
 </style>

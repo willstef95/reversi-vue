@@ -1,7 +1,7 @@
 <template>
-    <div class="cell" @click="handleClick">
+    <v-card class="cell" :style="{ background: '#4caf50' }" outlined @click="handleClick">
         <GameStone v-if="stone" :color="stone" />
-    </div>
+    </v-card>
 </template>
 
 <script setup>
@@ -18,44 +18,31 @@ const gameStore = useGameStore();
 
 const handleClick = async () => {
     try {
-        // Backend-Route mit Port 9000 aufrufen
         const url = `http://localhost:9000/makeMoveAjax/${props.row + 1}/${props.col + 1}`;
-        const response = await fetch(url, {
-            method: 'GET',
-        });
+        const response = await fetch(url, { method: 'GET' });
 
-        // Prüfen, ob die Antwort erfolgreich war
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // Antwort als JSON konvertieren
         const data = await response.json();
-
-        const responseString = JSON.stringify(data, null, 2); // Schön formatiert mit Einrückungen
-
-        // Ausgabe der Antwort als String in der Konsole
-        console.log('Server Response (String):', responseString);
-        // Ausgabe der Antwort in der Konsole
-        console.log('Server Response:', data);
-
-        // (Optional) Aktualisiere das Spielbrett
         gameStore.updateBoard(data);
-
     } catch (error) {
         console.error('Error calling backend:', error);
     }
 };
 </script>
 
-<style>
+<style scoped>
 .cell {
-    border: 1px solid black;
+    width: 100%;
+    /* Nutzt die Größe der Zelle aus dem Grid */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightgreen;
     cursor: pointer;
-    /* Zeigt an, dass das Element anklickbar ist */
+    background-color: #4caf50;
+    ;
 }
 </style>

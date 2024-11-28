@@ -1,7 +1,3 @@
-<template>
-    <div :class="`stone ${color}`"></div>
-</template>
-
 <script setup>
 const props = defineProps({
     color: {
@@ -12,19 +8,13 @@ const props = defineProps({
 });
 </script>
 
-<style>
+<template>
+    <v-avatar size="80%" :color="color === 'black' ? 'black' : 'white'" class="stone"></v-avatar>
+</template>
+
+<style scoped>
 .stone {
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-}
-
-.stone.black {
-    background-color: black;
-}
-
-.stone.white {
-    background-color: white;
     border: 2px solid black;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 </style>
