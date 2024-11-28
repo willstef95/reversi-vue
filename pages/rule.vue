@@ -112,6 +112,7 @@ s
 
 <style scoped>
 .rules-page {
+    background: #4caf50;
     min-height: 100vh;
     padding: 20px;
 }
