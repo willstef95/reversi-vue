@@ -16,17 +16,35 @@ const props = defineProps({
 
 const gameStore = useGameStore();
 
-const handleClick = () => {
-    const currentBoard = JSON.parse(JSON.stringify(gameStore.board));
-    gameStore.makeMove(props.row, props.col);
+const handleClick = async () => {
+    try {
+        // Backend-Route mit Port 9000 aufrufen
+        const url = `http://localhost:9000/makeMoveAjax/${props.row + 1}/${props.col + 1}`;
+        const response = await fetch(url, {
+            method: 'GET',
+        });
 
-    // Simuliere das Senden der Daten an den Server
-    console.log({
-        board: currentBoard,
-        clickedRow: props.row,
-        clickedCol: props.col,
-        currentPlayer: gameStore.currentPlayer,
-    });
+        // Prüfen, ob die Antwort erfolgreich war
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Antwort als JSON konvertieren
+        const data = await response.json();
+
+        const responseString = JSON.stringify(data, null, 2); // Schön formatiert mit Einrückungen
+
+        // Ausgabe der Antwort als String in der Konsole
+        console.log('Server Response (String):', responseString);
+        // Ausgabe der Antwort in der Konsole
+        console.log('Server Response:', data);
+
+        // (Optional) Aktualisiere das Spielbrett
+        gameStore.updateBoard(data);
+
+    } catch (error) {
+        console.error('Error calling backend:', error);
+    }
 };
 </script>
 
@@ -37,5 +55,7 @@ const handleClick = () => {
     align-items: center;
     justify-content: center;
     background-color: lightgreen;
+    cursor: pointer;
+    /* Zeigt an, dass das Element anklickbar ist */
 }
 </style>

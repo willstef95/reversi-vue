@@ -1,3 +1,12 @@
+<script setup>
+import { useGameStore } from '~/stores/game';
+import BoardCell from '~/components/BoardCell.vue';
+
+const gameStore = useGameStore();
+const board = computed(() => gameStore.board);
+</script>
+
+
 <template>
     <div class="board">
         <!-- Erzeuge Zeilen -->
@@ -9,13 +18,7 @@
     </div>
 </template>
 
-<script setup>
-import { useGameStore } from '~/stores/game';
-import BoardCell from '~/components/BoardCell.vue';
 
-const gameStore = useGameStore();
-const board = computed(() => gameStore.board);
-</script>
 
 <style>
 .board {

@@ -1,3 +1,13 @@
+<script setup>
+import { useGameStore } from '~/stores/game';
+import GameBoard from '~/components/GameBoard.vue';
+
+const gameStore = useGameStore();
+const currentPlayer = computed(() => gameStore.currentPlayer);
+const player1 = computed(() => gameStore.player1);
+const player2 = computed(() => gameStore.player2);
+</script>
+
 <template>
     <div class="game-container">
         <div class="player-info">
@@ -8,15 +18,7 @@
     </div>
 </template>
 
-<script setup>
-import { useGameStore } from '~/stores/game';
-import GameBoard from '~/components/GameBoard.vue';
 
-const gameStore = useGameStore();
-const currentPlayer = computed(() => gameStore.currentPlayer);
-const player1 = computed(() => gameStore.player1);
-const player2 = computed(() => gameStore.player2);
-</script>
 
 <style>
 .game-container {
