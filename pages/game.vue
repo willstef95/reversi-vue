@@ -12,7 +12,8 @@ const player2 = computed(() => gameStore.player2);
     <div class="game-container">
         <div class="player-info">
             <div :class="`stone ${currentPlayer}`"></div>
-            <p>{{ currentPlayer === 'black' ? player1 : player2 }} ist am Zug</p>
+            <p>{{ currentPlayer === 'black' ? player1 : player2 }}</p>
+            <div :class="`stone ${currentPlayer}`"></div>
         </div>
         <GameBoard />
     </div>
@@ -31,6 +32,15 @@ const player2 = computed(() => gameStore.player2);
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
+}
+
+.player-info p {
+    margin: 0;
+    /* Entfernt zusätzlichen Abstand um den Text */
+    font-size: 16px;
+    /* Gleiche Schriftgröße für eine klare Ausrichtung */
+    line-height: 30px;
+    /* Gleiche Höhe wie die Steine */
 }
 
 .stone {

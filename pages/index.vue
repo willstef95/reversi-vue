@@ -1,10 +1,9 @@
 <script setup>
 import { useGameStore } from '~/stores/game';
-import { useRouter } from 'vue-router';
+import { navigateTo } from '#app';
 import { ref } from 'vue';
 
 const gameStore = useGameStore(); // Pinia Store verwenden
-const router = useRouter(); // Für das Routing
 
 // Lokale States für die Eingabe
 const player1 = ref('');
@@ -15,12 +14,13 @@ const startGame = () => {
     // Spielernamen im Store speichern
     gameStore.setPlayers(player1.value, player2.value);
 
-    gameStore.initializeBoard()
+    gameStore.initializeBoard();
 
-    // Auf die Game-Seite routen
-    router.push('/game');
+    // Serverseitiges Redirect
+    navigateTo('/game');
 };
 </script>
+
 
 <template>
     <div class="landing-page">
