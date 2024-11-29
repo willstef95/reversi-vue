@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { getBaseUrl } from '~/utils/baseUrl';
 
 export const useGameStore = defineStore('game', {
     state: () => ({
@@ -15,7 +16,7 @@ export const useGameStore = defineStore('game', {
         async fetchPlayerNames(player1, player2) {
             try {
                 // Backend-Route mit Port 9000 aufrufen
-                const url = `http://localhost:9000/playerNames/${player1}/${player2}`;
+                const url = `${getBaseUrl()}/playerNames/${player1}/${player2}`;
                 const response = await fetch(url, {
                     method: 'GET',
                 });

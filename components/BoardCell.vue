@@ -7,6 +7,7 @@
 <script setup>
 import GameStone from '~/components/GameStone.vue';
 import { useGameStore } from '~/stores/game';
+import { getBaseUrl } from '~/utils/baseUrl';
 
 const props = defineProps({
     row: Number,
@@ -18,7 +19,7 @@ const gameStore = useGameStore();
 
 const handleClick = async () => {
     try {
-        const url = `http://localhost:9000/makeMoveAjax/${props.row + 1}/${props.col + 1}`;
+        const url = `${getBaseUrl()}/makeMoveAjax/${props.row + 1}/${props.col + 1}`;
         const response = await fetch(url, { method: 'GET' });
 
         if (!response.ok) {
