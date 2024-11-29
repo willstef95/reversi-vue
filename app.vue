@@ -1,4 +1,5 @@
 <template>
+  <VitePwaManifest />
   <div id="app">
     <!-- Globale Navigation -->
     <header>

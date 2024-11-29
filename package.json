@@ -5,13 +5,16 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "start": "nuxt start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "generate-pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
     "@nuxtjs/proxy": "^2.1.0",
     "@quasar/extras": "^1.16.13",
+    "@vite-pwa/nuxt": "^0.10.6",
     "axios": "^1.7.8",
     "nuxt": "^3.14.1592",
     "nuxt-proxy": "^0.4.1",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",
+    "@vite-pwa/assets-generator": "^0.2.6",
     "eslint": "^9.15.0",
     "sass": "^1.49.0",
     "sass-embedded": "^1.81.0",
