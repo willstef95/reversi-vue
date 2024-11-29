@@ -1,4 +1,5 @@
 <template>
+  <VitePwaManifest />
   <div id="app">
     <!-- Globale Navigation -->
     <header>
@@ -15,9 +16,9 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <!-- <footer>
       <p>&copy; 2024 Reversi. Alle Rechte vorbehalten.</p>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
