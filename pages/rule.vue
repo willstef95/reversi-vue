@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const goToGame = () => {
-    router.push('/game'); // Navigiere zur Game-Seite
+    router.push('/game');
 };
 </script>
 
@@ -112,42 +112,32 @@ const goToGame = () => {
 .rules-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* Zwei Spalten */
     gap: 20px;
-    /* Abstand zwischen Zellen */
 }
 
 @media (max-width: 768px) {
     .rules-container {
         grid-template-columns: 1fr;
-        /* Eine Spalte bei kleinen Bildschirmen */
     }
 }
 
 /* Zellen */
 .cell {
     display: flex;
-    /* Flexbox aktivieren */
     flex-direction: column;
-    /* Vertikale Anordnung */
     justify-content: center;
-    /* Vertikale Zentrierung */
     align-items: center;
-    /* Horizontale Zentrierung */
     border: 1px solid #000;
     border-radius: 15px;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    /* Text innerhalb der Zelle zentrieren */
 }
 
 h2 {
     margin: 0 0 10px;
-    /* Kein Abstand oben, nur unten */
     padding: 0;
-    /* Sicherheitshalber Padding entfernen */
 }
 
 
@@ -155,7 +145,6 @@ p,
 ul {
     margin: 0;
     text-align: center;
-    /* Text innerhalb von p und ul zentrieren */
 }
 
 ul {

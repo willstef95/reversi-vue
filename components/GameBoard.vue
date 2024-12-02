@@ -9,9 +9,7 @@ const board = computed(() => gameStore.board);
 
 <template>
     <div class="board">
-        <!-- Erzeuge Zeilen -->
         <div class="row" v-for="(row, rowIndex) in board" :key="`row-${rowIndex}`">
-            <!-- Erzeuge Zellen in jeder Zeile -->
             <BoardCell v-for="(cell, colIndex) in row" :key="`cell-${rowIndex}-${colIndex}`" :row="rowIndex"
                 :col="colIndex" :stone="cell" />
         </div>

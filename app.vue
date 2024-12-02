@@ -9,15 +9,10 @@
       </nav>
     </header>
 
-    <!-- Hauptinhalt (von den Seiten gerendert) -->
     <main>
       <NuxtPage />
     </main>
 
-    <!-- Footer -->
-    <!-- <footer>
-      <p>&copy; 2024 Reversi. Alle Rechte vorbehalten.</p>
-    </footer> -->
   </div>
 </template>
 

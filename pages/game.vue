@@ -36,11 +36,8 @@ const player2 = computed(() => gameStore.player2);
 
 .player-info p {
     margin: 0;
-    /* Entfernt zusätzlichen Abstand um den Text */
     font-size: 16px;
-    /* Gleiche Schriftgröße für eine klare Ausrichtung */
     line-height: 30px;
-    /* Gleiche Höhe wie die Steine */
 }
 
 .stone {

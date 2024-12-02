@@ -1,7 +1,3 @@
-<template>
-    <div :class="`stone ${color}`"></div>
-</template>
-
 <script setup>
 const props = defineProps({
     color: {
@@ -11,6 +7,11 @@ const props = defineProps({
     },
 });
 </script>
+
+<template>
+    <div :class="`stone ${color}`"></div>
+</template>
+
 
 <style>
 .stone {
