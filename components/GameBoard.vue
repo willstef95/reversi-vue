@@ -1,3 +1,14 @@
+<script setup>
+import { useGameStore } from '~/stores/game';
+import BoardCell from '~/components/BoardCell.vue';
+
+const gameStore = useGameStore();
+const board = computed(() => gameStore.board);
+
+// Flatten the 2D array for easier rendering in grid
+const flattenedBoard = computed(() => board.value.flat());
+</script>
+
 <template>
     <v-container class="d-flex justify-center align-center">
         <v-sheet elevation="4" class="board">
@@ -10,21 +21,10 @@
     </v-container>
 </template>
 
-<script setup>
-import { useGameStore } from '~/stores/game';
-import BoardCell from '~/components/BoardCell.vue';
-
-const gameStore = useGameStore();
-const board = computed(() => gameStore.board);
-
-// Flatten the 2D array for easier rendering in grid
-const flattenedBoard = computed(() => board.value.flat());
-</script>
 
 <style scoped>
 .board {
     aspect-ratio: 1;
-    /* Sicherstellt, dass das Spielfeld quadratisch bleibt */
     width: 90vw;
     /* Nimmt bis zu 90% der Bildschirmbreite ein */
     max-width: 500px;
