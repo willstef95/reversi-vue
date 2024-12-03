@@ -37,7 +37,6 @@ const handleClick = async () => {
 <style scoped>
 .cell {
     width: 100%;
-    /* Nutzt die Größe der Zelle aus dem Grid */
     height: 100%;
     display: flex;
     align-items: center;
