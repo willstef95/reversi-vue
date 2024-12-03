@@ -3,20 +3,16 @@ import { useGameStore } from '~/stores/game';
 import { navigateTo } from '#app';
 import { ref } from 'vue';
 
-const gameStore = useGameStore(); // Pinia Store verwenden
+const gameStore = useGameStore();
 
-// Lokale States für die Eingabe
 const player1 = ref('');
 const player2 = ref('');
 
-// Funktion zum Starten des Spiels
 const startGame = () => {
-    // Spielernamen im Store speichern
     gameStore.setPlayers(player1.value, player2.value);
 
     gameStore.initializeBoard();
 
-    // Serverseitiges Redirect
     navigateTo('/game');
 };
 </script>

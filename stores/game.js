@@ -20,15 +20,12 @@ export const useGameStore = defineStore('game', {
                     method: 'GET',
                 });
                 console.log('Response:', response);
-                // Prüfen, ob die Antwort erfolgreich war
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
-                // Antwort als JSON konvertieren
                 const data = await response.json();
 
-                // Spielernamen aus der Antwort setzen
                 this.player1 = player1;
                 this.player2 = player2;
 
@@ -59,7 +56,6 @@ export const useGameStore = defineStore('game', {
         updateBoard(data) {
             const { cells: newBoardCells, playerState } = data.newBoard;
 
-            // Spielfeld aktualisieren
             this.board = newBoardCells.map(row =>
                 row.map(cell => {
                     if (cell === 'B') return 'black';
@@ -68,7 +64,6 @@ export const useGameStore = defineStore('game', {
                 })
             );
 
-            // Aktuellen Spieler setzen
             this.currentPlayer = playerState === 'B' ? 'black' : 'white';
 
             // Debugging

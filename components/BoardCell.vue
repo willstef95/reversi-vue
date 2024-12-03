@@ -1,9 +1,3 @@
-<template>
-    <div class="cell" @click="handleClick">
-        <GameStone v-if="stone" :color="stone" />
-    </div>
-</template>
-
 <script setup>
 import GameStone from '~/components/GameStone.vue';
 import { useGameStore } from '~/stores/game';
@@ -41,6 +35,12 @@ const handleClick = async () => {
     }
 };
 </script>
+
+<template>
+    <div class="cell" @click="handleClick">
+        <GameStone v-if="stone" :color="stone" />
+    </div>
+</template>
 
 <style>
 .cell {
